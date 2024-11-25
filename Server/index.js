@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Database Cconnected
+//Database Connected
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-//server Added port: 3000
+//Server connexted
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
