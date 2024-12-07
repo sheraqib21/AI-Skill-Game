@@ -23,7 +23,7 @@ const questionSchema = new mongoose.Schema({
     default: [],
   },
   correctAnswer: {
-    type: String,   // Store the correct answer (can be an option or short answer)
+    type: String,   
     required: true,
   },
 });

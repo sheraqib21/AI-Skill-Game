@@ -2,7 +2,7 @@ const geminiApi = require('../services/GeminiApi');
 const Question = require('../models/Question');  // Import the Question model
 
 const getQuestions = async (req, res) => {
-  // Get category and level from the request body
+  
   const { category, level } = req.body;
 
   if (!category || !level) {
@@ -10,23 +10,23 @@ const getQuestions = async (req, res) => {
   }
 
   try {
-    // Generate a question using the Gemini API
+    
     const generatedQuestion = await geminiApi.generateQuestion(category, level);
 
-    // Create a new question document using the generated question data
+    
     const newQuestion = new Question({
-      category,                    // Category from request body
-      level,                       // Level from request body
-      type: 'mcq',                 // Assuming it's an MCQ for now (you can adjust this as needed)
-      questionText: generatedQuestion.questionText,  // Question text
-      options: generatedQuestion.options,  // Options array
+      category,                    
+      level,                       
+      type: 'short question',                 
+      questionText: generatedQuestion.questionText,  
+      options: generatedQuestion.options,  
       correctAnswer: generatedQuestion.correctAnswer,  // Correct answer
     });
 
-    // Save the question document to the database
+    
     await newQuestion.save();
 
-    // Send the generated question as a response
+    
     res.status(200).json(generatedQuestion);
   } catch (error) {
     console.error('Error generating or saving question:', error);
