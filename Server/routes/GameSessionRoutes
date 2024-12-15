@@ -1,0 +1,23 @@
+const express = require('express');
+const {
+    startGameSession,
+    submitGameSession,
+    getAllGameSessions,
+    getGameSessionsByPlayer,
+} = require('../controllers/GameSession');
+
+const GameSessionRouter = express.Router();
+
+
+GameSessionRouter.post('/start', startGameSession);
+
+
+GameSessionRouter.post('/submit', submitGameSession);
+
+
+GameSessionRouter.get('/all', getAllGameSessions);
+
+
+GameSessionRouter.get('/player/:playerID', getGameSessionsByPlayer);
+
+module.exports = GameSessionRouter;

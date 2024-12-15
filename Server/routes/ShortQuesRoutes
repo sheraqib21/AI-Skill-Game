@@ -1,0 +1,27 @@
+const express = require('express');
+const {
+    createShortQuestion,
+    getAllShortQuestions,
+    getShortQuestionById,
+    updateShortQuestion,
+    deleteShortQuestion
+} = require('../controllers/ShortQuestion');
+
+const ShortQuesRouter = express.Router();
+
+
+ShortQuesRouter.post('/create', createShortQuestion);
+
+
+ShortQuesRouter.get('/all', getAllShortQuestions);
+
+
+ShortQuesRouter.get('/:id', getShortQuestionById);
+
+
+ShortQuesRouter.put('/:id', updateShortQuestion);
+
+
+ShortQuesRouter.delete('/:id', deleteShortQuestion);
+
+module.exports = ShortQuesRouter;

@@ -4,6 +4,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const questionRoutes = require('./routes/QuestionRoutes');  // Correct import path
+const CategoryRouter = require('./routes/CategoryRoutes');
+const PlayerRouter = require('./routes/PlayerRoutes');
+const GameSessionRouter = require('./routes/GameSessionRoutes');
+const ScoreRouter = require('./routes/ScoreRoutes');
+const McqRouter = require('./routes/McqRoutes');
+const ShortQuesRouter = require('./routes/ShortQuesRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -14,7 +20,12 @@ app.use(bodyParser.json());
 
 // Use questionRoutes under the '/api' path
 app.use('/api', questionRoutes);  // Ensure this is correct
-
+app.use('/api/categories',CategoryRouter);
+app.use('/api/player',PlayerRouter);
+app.use('/api/gamesession',GameSessionRouter);
+app.use('/api/score',ScoreRouter);
+app.use('/api/mcq',McqRouter);
+app.use('/api/shortques',ShortQuesRouter);
 app.get('/', (req, res) => {
   res.send('Hello World');
 });

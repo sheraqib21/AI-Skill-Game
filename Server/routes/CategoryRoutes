@@ -1,0 +1,19 @@
+const express = require('express');
+const {
+    addCategory,
+    getCategories,
+    getCategoryById,
+    updateCategory,
+    deleteCategory,
+} = require('../controllers/Category');
+
+const CategoryRouter = express.Router();
+
+// Routes for Categories
+CategoryRouter.post('/add', addCategory);         // Add a new category
+CategoryRouter.get('/all', getCategories);        // Get all categories
+CategoryRouter.get('/:id', getCategoryById);      // Get a category by ID
+CategoryRouter.put('/:id', updateCategory);       // Update a category by ID
+CategoryRouter.delete('/:id', deleteCategory);    // Delete a category by ID
+
+module.exports = CategoryRouter;
